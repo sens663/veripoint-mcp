@@ -30,6 +30,16 @@ See [Cursor configuration](client-configs/cursor-mcp.json) and [VS Code configur
 
 API-key clients can instead use `https://veripoint.ai/api/mcp` with an `Authorization: Bearer` header as described in the setup guide. Keep keys in your client's secure credential storage; never commit them to a repository or publish them in a directory.
 
+## Gemini CLI
+
+Install the published extension:
+
+```sh
+gemini extensions install https://github.com/sens663/veripoint-mcp
+```
+
+After linking your Veripoint workspace, use `/mcp auth veripoint` in Gemini CLI to authorize the OAuth connection. The extension contains only MCP connection metadata; it runs no setup scripts or hooks. Verify authentication in your client before relying on tool results.
+
 ## Tools
 
 | Tool | Purpose | Research allowance |
