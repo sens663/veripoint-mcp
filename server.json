@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.veripoint/mcp",
+  "title": "Veripoint — AI Company Financial Research",
+  "description": "AI financial research for private and public companies, with evidence and saved workspace reports.",
+  "version": "1.1.0",
+  "websiteUrl": "https://veripoint.ai/api-docs/mcp-setup",
+  "icons": [
+    {
+      "src": "https://veripoint.ai/logo-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://veripoint.sens663.chatgpt.site/mcp"
+    }
+  ]
+}
