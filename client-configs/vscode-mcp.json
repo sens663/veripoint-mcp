@@ -1,0 +1,8 @@
+{
+  "servers": {
+    "veripoint": {
+      "type": "http",
+      "url": "https://veripoint.sens663.chatgpt.site/mcp"
+    }
+  }
+}
