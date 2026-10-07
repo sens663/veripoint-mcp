@@ -1,0 +1,98 @@
+[
+  {
+    "name": "research_company",
+    "title": "Research company financials",
+    "description": "Research a private or public company, or compare companies, using available financial records. Include legal name and country, registration number or ticker, and the financial question. Returns analysis and evidence with periods, currencies, units and scope. Missing values remain unavailable. A completed answer consumes one workspace search and is saved; a failed or clarifying answer is not a completed analysis. Check get_usage first and saved reports before retrying an interrupted search.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3000,
+          "description": "A self-contained financial question identifying the legal entity and jurisdiction. Example: Analyse Microsoft Corporation (MSFT), United States, using available annual statements; show reporting periods, currency, scope and evidence."
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": false,
+      "openWorldHint": true
+    }
+  },
+  {
+    "name": "list_reports",
+    "title": "Find saved company research",
+    "description": "Find saved reports in the authorized workspace. Returns at most 20 reports per page. Does not run research or consume searches.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Optional words to find in saved questions or answers."
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100000,
+          "description": "Page number, starting at 1."
+        }
+      },
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "get_report",
+    "title": "Read a saved financial report",
+    "description": "Read one saved report in the authorized workspace, including source evidence and financial-statement datasets. Obtain the report ID from list_reports or a completed research_company response. Does not consume searches.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Saved report ID. This is not a company registration number or ticker."
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  },
+  {
+    "name": "get_usage",
+    "title": "Check research allowance",
+    "description": "Check the authorized workspace plan, searches used and remaining, and the next reset date. Reading saved reports and checking usage do not consume searches. Free allowance resets daily at 00:00 UTC; paid allowances reset monthly.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {},
+      "additionalProperties": false
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    }
+  }
+]
